@@ -1,4 +1,4 @@
-# Outputs for hsbc-hk VPC replica infrastructure
+# Outputs for company VPC replica infrastructure
 # Important resource information for use by other configurations
 
 # VPC Information

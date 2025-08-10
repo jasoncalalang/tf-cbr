@@ -1,13 +1,13 @@
-# HSBC-HK VPC Replica with Context-Based Restrictions (CBR)
+# Company VPC Replica with Context-Based Restrictions (CBR)
 
-This Terraform project recreates the `hsbc-hk` VPC infrastructure in IBM Cloud with enhanced security through Context-Based Restrictions (CBR). The project uses a two-phase deployment architecture for better risk management and modular deployments.
+This Terraform project recreates the `company-vpc` VPC infrastructure in IBM Cloud with enhanced security through Context-Based Restrictions (CBR). The project uses a two-phase deployment architecture for better risk management and modular deployments.
 
 ## 📋 Two-Phase Architecture Overview
 
 This project deploys infrastructure in two distinct phases for better risk management and modularity:
 
 ### Phase 1: VPC Infrastructure Foundation
-- **1 VPC** (`hsbc-hk-replica`) in the `jp-tok` region
+- **1 VPC** (`company-vpc`) in the `jp-tok` region
 - **3 Address Prefixes** across three availability zones
 - **3 Subnets** with appropriate CIDR blocks and zone distribution
 - **2 Public Gateways** in zones jp-tok-2 and jp-tok-3
@@ -25,7 +25,7 @@ This project deploys infrastructure in two distinct phases for better risk manag
 
 | Component | Original | Replica |
 |-----------|----------|---------|
-| VPC Name | `hsbc-hk` | `hsbc-hk-replica` |
+| VPC Name | `company-vpc` | `company-vpc` |
 | Region | `jp-tok` | `jp-tok` (same) |
 | Subnets | `sn-20250218-01/02/03` | `sn-20250218-01/02/03` (same names) |
 | Public Gateways | `test-gw`, `gw3` | `test-gw`, `gw3` (same names) |
@@ -148,7 +148,7 @@ curl http://$TEST_IP  # Should show nginx test page
 ## 🔧 Configuration Details
 
 ### VPC Configuration
-- **Name**: `hsbc-hk-replica` (configurable via `vpc_name` variable)
+- **Name**: `company-vpc` (configurable via `vpc_name` variable)
 - **Region**: `jp-tok` (Tokyo)
 - **Classic Access**: Disabled (matches original)
 - **DNS**: System resolver with private DNS servers
@@ -238,7 +238,7 @@ Key variables for VPC infrastructure:
 # Basic Configuration
 ibmcloud_api_key = "your-api-key-here"
 region          = "jp-tok"
-vpc_name        = "hsbc-hk-replica"
+vpc_name        = "company-vpc"
 resource_group_id = "default"
 
 # Network Configuration  
@@ -597,7 +597,7 @@ ibmcloud cbr zones
 
 ## ⚠️ Important Security Notice
 
-**This configuration replicates the exact specifications of the original `hsbc-hk` VPC with added CBR security controls.**
+**This configuration replicates the exact specifications of the original `company-vpc` VPC with added CBR security controls.**
 
 ### Pre-Production Checklist
 - [ ] Review and update all IP allowlists in security groups

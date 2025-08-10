@@ -86,5 +86,5 @@ variable "test_vsi_name" {
 variable "tags" {
   description = "Tags to be applied to all resources"
   type        = list(string)
-  default     = ["terraform", "hsbc-hk-replica", "cbr-test", "phase-2"]
+  default     = ["terraform", "company-vpc", "cbr-test", "phase-2"]
 }

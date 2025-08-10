@@ -1,4 +1,4 @@
-# Terraform configuration for hsbc-hk VPC replica
+# Terraform configuration for company VPC replica
 # Terraform and provider version constraints
 
 terraform {

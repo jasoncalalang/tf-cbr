@@ -1,4 +1,4 @@
-# Main configuration for hsbc-hk VPC replica infrastructure
+# Main configuration for company VPC replica infrastructure
 # Recreates the exact VPC infrastructure based on specifications
 
 # Data source for resource group

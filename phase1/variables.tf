@@ -24,7 +24,7 @@ variable "resource_group_id" {
 variable "vpc_name" {
   description = "Name of the VPC to be created"
   type        = string
-  default     = "hsbc-hk-replica"
+  default     = "company-vpc"
 }
 
 variable "classic_access" {
@@ -107,5 +107,5 @@ variable "jason_ws_allowed_ip" {
 variable "tags" {
   description = "Tags to be applied to all resources"
   type        = list(string)
-  default     = ["terraform", "hsbc-hk-replica", "vpc-infrastructure", "phase-1"]
+  default     = ["terraform", "company-vpc", "vpc-infrastructure", "phase-1"]
 }

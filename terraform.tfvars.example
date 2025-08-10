@@ -1,4 +1,4 @@
-# Example terraform.tfvars file for hsbc-hk VPC replica
+# Example terraform.tfvars file for company VPC replica
 # Copy this file to terraform.tfvars and update with your actual values
 
 # IBM Cloud API Key - REQUIRED
@@ -13,15 +13,15 @@ region = "jp-tok"
 # To use a different resource group, specify its name here
 resource_group_id = "default"
 
-# VPC Name - Default: hsbc-hk-replica
+# VPC Name - Default: company-vpc
 # Must be unique within the region
-vpc_name = "hsbc-hk-replica"
+vpc_name = "company-vpc"
 
 # Classic Access - Default: false
 # Set to true only if you need classic infrastructure access
 classic_access = false
 
-# Address Prefixes - Default values match original hsbc-hk VPC
+# Address Prefixes - Default values match original company VPC
 # Only modify if you need different CIDR ranges
 address_prefixes = {
   "jp-tok-1" = "10.244.0.0/18"
@@ -29,7 +29,7 @@ address_prefixes = {
   "jp-tok-3" = "10.244.128.0/18"
 }
 
-# Subnet Configuration - Default values match original hsbc-hk VPC
+# Subnet Configuration - Default values match original company VPC
 # Modify CIDR blocks and public gateway settings as needed
 subnet_configs = {
   "subnet-1" = {
@@ -75,7 +75,7 @@ jason_ws_allowed_ip = "136.158.43.48"
 # Add additional tags as needed for your organization
 tags = [
   "terraform",
-  "hsbc-hk-replica", 
+  "company-vpc", 
   "vpc-infrastructure",
   "environment:production"  # Example additional tag
 ]

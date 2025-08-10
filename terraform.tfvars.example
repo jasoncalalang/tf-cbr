@@ -1,0 +1,100 @@
+# Example terraform.tfvars file for hsbc-hk VPC replica
+# Copy this file to terraform.tfvars and update with your actual values
+
+# IBM Cloud API Key - REQUIRED
+# Obtain from: https://cloud.ibm.com/iam/apikeys
+ibmcloud_api_key = "YOUR_IBM_CLOUD_API_KEY_HERE"
+
+# IBM Cloud Region - Default: jp-tok (Tokyo)
+# Available regions: us-south, us-east, eu-gb, eu-de, jp-tok, au-syd, etc.
+region = "jp-tok"
+
+# Resource Group ID - Default: "default" (uses Default resource group)
+# To use a different resource group, specify its name here
+resource_group_id = "default"
+
+# VPC Name - Default: hsbc-hk-replica
+# Must be unique within the region
+vpc_name = "hsbc-hk-replica"
+
+# Classic Access - Default: false
+# Set to true only if you need classic infrastructure access
+classic_access = false
+
+# Address Prefixes - Default values match original hsbc-hk VPC
+# Only modify if you need different CIDR ranges
+address_prefixes = {
+  "jp-tok-1" = "10.244.0.0/18"
+  "jp-tok-2" = "10.244.64.0/18"
+  "jp-tok-3" = "10.244.128.0/18"
+}
+
+# Subnet Configuration - Default values match original hsbc-hk VPC
+# Modify CIDR blocks and public gateway settings as needed
+subnet_configs = {
+  "subnet-1" = {
+    zone               = "jp-tok-1"
+    cidr               = "10.244.0.0/24"
+    has_public_gateway = false
+  }
+  "subnet-2" = {
+    zone               = "jp-tok-2"
+    cidr               = "10.244.64.0/24"
+    has_public_gateway = true
+  }
+  "subnet-3" = {
+    zone               = "jp-tok-3"
+    cidr               = "10.244.128.0/24"
+    has_public_gateway = true
+  }
+}
+
+# Public Gateways - Zones where public gateways should be created
+# Default: jp-tok-2 and jp-tok-3 (matches original configuration)
+public_gateways = ["jp-tok-2", "jp-tok-3"]
+
+# Security Group IP Address Allowlists
+# Update these with your actual IP addresses that need access
+
+# HLF Security Group - Single IP allowed
+hlf_sg_allowed_ip = "136.158.43.87"
+
+# Jason CS Security Group - Multiple IPs allowed
+jason_cs_sg_allowed_ips = [
+  "136.158.43.48",
+  "120.29.79.239", 
+  "136.158.43.207",
+  "112.200.9.106",
+  "112.200.7.97"
+]
+
+# Jason WS Security Group - Single IP allowed  
+jason_ws_allowed_ip = "136.158.43.48"
+
+# Resource Tags - Applied to all created resources
+# Add additional tags as needed for your organization
+tags = [
+  "terraform",
+  "hsbc-hk-replica", 
+  "vpc-infrastructure",
+  "environment:production"  # Example additional tag
+]
+
+# ================================
+# DEPLOYMENT INSTRUCTIONS:
+# ================================
+# 1. Copy this file: cp terraform.tfvars.example terraform.tfvars
+# 2. Update your IBM Cloud API key and other values in terraform.tfvars
+# 3. Initialize Terraform: terraform init
+# 4. Review the plan: terraform plan
+# 5. Apply the configuration: terraform apply
+# 6. Verify resources in IBM Cloud console
+
+# ================================
+# IMPORTANT SECURITY NOTES:
+# ================================
+# - Never commit terraform.tfvars to version control (add to .gitignore)
+# - Store your API key securely (consider using environment variables)
+# - Review security group IP allowlists regularly
+# - Use least privilege access for API keys
+# - Consider using IBM Cloud Secrets Manager for sensitive values
